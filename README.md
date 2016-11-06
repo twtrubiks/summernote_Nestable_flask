@@ -1,9 +1,9 @@
 # summernote_Nestable_flask
 summernote Combine Nestable Use Python Flask
 
-* [Demo]()  
+* [Demo](https://youtu.be/UhjntU5Ql4U)  
 
-搭配 SQLite簡 單的結合 [Summernote](http://summernote.org/) 以及超酷炫的 [Nestable](http://dbushell.github.io/Nestable/)
+搭配 SQLite 簡單的結合 [Summernote](http://summernote.org/) 以及超酷炫的 [Nestable](http://dbushell.github.io/Nestable/)
  
 ## 特色
 * 強大的 [Summernote](http://summernote.org/) 。
