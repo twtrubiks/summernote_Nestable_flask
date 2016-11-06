@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Summernote + Nestable DEMO</title>
+    <link type="text/css" rel="stylesheet" href="static/stylesheets/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="static/stylesheets/summernote.css">
+    <link type="text/css" rel="stylesheet" href="static/stylesheets/jquery.dataTables.css">
+    <link type="text/css" rel="stylesheet" href="/static/stylesheets/font-awesome.min.css">
+    <link type="text/css" rel="stylesheet" href="/static/stylesheets/nestable.css">
+    <script src="static/javascripts/jquery.min.js"></script>
+    <script src="static/javascripts/bootstrap.min.js"></script>
+    <script src="static/javascripts/summernote.js"></script>
+    <script src="static/javascripts/jquery.dataTables.js"></script>
+    <script src="/static/javascripts/jquery.nestable.js"></script>
+    <script src="/static/javascripts/app.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Summernote + Nestable DEMO</h1>
+            <p>Summernote + Nestable Example Use Flask</p>
+        </div>
+        <form>
+          <div class="form-group">
+              <label for="InputTitle">Title</label>
+              <input type="hidden" class="form-control" id="title_id">
+              <input type="text" class="form-control" id="title" placeholder="title">
+          </div>
+          <div class="form-group">
+              <label for="InputSequence">Sequence</label>
+              <input type="number" class="form-control" id="sequence" placeholder="sequence">
+          </div>
+          <div class="form-group" >
+               <label for="InputSummernote">Content</label>
+               <div id="summernote"></div>
+          </div>
+            <div align="right">
+                <a href="javascript:void(0)" id="addRow"><i class="fa fa-plus-circle fa-2x"></i> </a>
+            </div>
+            <div align="right" hidden>
+                <a href="javascript:void(0)" id="editCheck"><i class="fa fa-check-circle fa-2x"></i> </a>
+            </div>
+        </form>
+        <table id="datatables" class="table table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Content</th>
+                    <th>Sequence</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+               {% for _document in document_list%}
+                   <tr>
+                        <td>{{ _document.ID }}</td>
+                        <td>{{ _document.Title }}</td>
+                        <td>{{ _document.Content | safe }}</td>
+                        <td>{{ _document.Sequence }}</td>
+                            <td style="width: 50px;">
+                             <a href="javascript:void(0)"><i class="fa fa-minus-circle fa-2x"></i></a>
+                             <a href="javascript:void(0)"><i class="fa fa-pencil fa-2x"></i></a>
+                         </td>
+                    </tr>
+               {% endfor%}
+            </tbody>
+        </table>
+        <h4>Nestable</h4>
+        <div class="cf nestable-lists">
+            <div class="dd" id="nestable">
+                <ol class="dd-list">
+                   {% for _document in document_list%}
+                        <li class="dd-item dd3-item" data-id="{{ _document.ID }}">
+                            <div class="dd-handle dd3-handle">Drag</div><div class="dd3-content">{{ _document.Title }}</div>
+                        </li>
+                    {% endfor %}
+                </ol>
+            </div>
+        </div>
+        <a href="/preview" class="btn btn-primary btn-block" role="button">Preview</a>
+    </div>
+</body>
+</html>
